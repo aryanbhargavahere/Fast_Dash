@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.filled.Person
@@ -24,9 +25,8 @@ import com.example.minigrocerydeliveryapp.Room.GroceryViewModel
 @Composable
 fun LoginScreen(
     viewModel: GroceryViewModel,
-    onLoginSuccess: () -> Unit
+    onLoginSuccess: (String, String) -> Unit // Updated: Now takes Name and Phone
 ) {
-    // Local state for OTP visibility
     var otpValue by remember { mutableStateOf("") }
     var isOtpSent by remember { mutableStateOf(false) }
 
@@ -38,9 +38,8 @@ fun LoginScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        // App Logo or Illustration
         Image(
-            painter = painterResource(id = R.drawable.fresh_dash_logo), // Use your actual logo resource
+            painter = painterResource(id = R.drawable.fresh_dash_logo),
             contentDescription = "App Logo",
             modifier = Modifier.size(120.dp),
             contentScale = ContentScale.Fit
@@ -63,14 +62,13 @@ fun LoginScreen(
         )
 
         if (!isOtpSent) {
-            // 1. NAME INPUT (Linked to ViewModel)
             OutlinedTextField(
                 value = viewModel.userName,
                 onValueChange = { viewModel.userName = it },
                 label = { Text("Full Name") },
                 placeholder = { Text("e.g. Alex Johnson") },
                 modifier = Modifier.fillMaxWidth(),
-                leadingIcon = { Icon(Icons.Default.Person, contentDescription = null, tint = Color(0xFF006D3B)) },
+                leadingIcon = { Icon(Icons.Default.Person, null, tint = Color(0xFF006D3B)) },
                 shape = RoundedCornerShape(12.dp),
                 singleLine = true,
                 colors = OutlinedTextFieldDefaults.colors(
@@ -81,25 +79,22 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // 2. PHONE INPUT (Linked to ViewModel)
             OutlinedTextField(
                 value = viewModel.userPhone,
                 onValueChange = { viewModel.userPhone = it },
                 label = { Text("Phone Number") },
-                placeholder = { Text("") },
                 modifier = Modifier.fillMaxWidth(),
-                leadingIcon = { Icon(Icons.Default.Phone, contentDescription = null, tint = Color(0xFF006D3B)) },
+                leadingIcon = { Icon(Icons.Default.Phone, null, tint = Color(0xFF006D3B)) },
                 prefix = { Text("+91 ", fontWeight = FontWeight.Bold) },
                 shape = RoundedCornerShape(12.dp),
                 singleLine = true,
-                keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = KeyboardType.Phone),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = Color(0xFF006D3B),
                     focusedLabelColor = Color(0xFF006D3B)
                 )
             )
         } else {
-            // 3. OTP INPUT
             OutlinedTextField(
                 value = otpValue,
                 onValueChange = { if (it.length <= 4) otpValue = it },
@@ -108,7 +103,7 @@ fun LoginScreen(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(12.dp),
                 singleLine = true,
-                keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = KeyboardType.Number),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = Color(0xFF006D3B),
                     focusedLabelColor = Color(0xFF006D3B)
@@ -118,7 +113,6 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // ACTION BUTTON
         Button(
             onClick = {
                 if (!isOtpSent) {
@@ -127,13 +121,12 @@ fun LoginScreen(
                     }
                 } else {
                     if (otpValue == "1234") {
-                        onLoginSuccess()
+                        // Pass current values back to navigation
+                        onLoginSuccess(viewModel.userName, viewModel.userPhone)
                     }
                 }
             },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp),
+            modifier = Modifier.fillMaxWidth().height(56.dp),
             shape = RoundedCornerShape(12.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF006D3B))
         ) {

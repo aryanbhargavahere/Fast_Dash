@@ -8,16 +8,23 @@ import com.example.minigrocerydeliveryapp.Room.GroceryViewModel
 import com.example.minigrocerydeliveryapp.screens.*
 
 @Composable
-fun AppNavigation(viewModel: GroceryViewModel) {
+fun AppNavigation(
+    viewModel: GroceryViewModel,
+    startDestination: String
+) {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "login") {
-
-        // 1. Login Screen: Captures Name and Phone into ViewModel
+    NavHost(
+        navController = navController,
+        startDestination = startDestination
+    ) {
+        // 1. Login Screen
         composable(route = "login") {
             LoginScreen(
                 viewModel = viewModel,
-                onLoginSuccess = {
+                // FIXED: Explicitly naming parameters to fix type inference errors
+                onLoginSuccess = { name: String, phone: String ->
+                    viewModel.loginUser(name, phone)
                     navController.navigate("home") {
                         popUpTo("login") { inclusive = true }
                     }
@@ -32,7 +39,7 @@ fun AppNavigation(viewModel: GroceryViewModel) {
                 onCartClick = { navController.navigate("cart") },
                 onAddressClick = { navController.navigate("address") },
                 onSeeAllCategories = { navController.navigate("categories") },
-                onAccountClick = { navController.navigate("account") } // Link to Account
+                onAccountClick = { navController.navigate("account") }
             )
         }
 
@@ -55,39 +62,52 @@ fun AppNavigation(viewModel: GroceryViewModel) {
             CartScreen(
                 viewModel = viewModel,
                 onCheckout = { navController.navigate("checkout") },
-                onBack = { navController.popBackStack() } // This makes the back arrow work
+                onBack = { navController.popBackStack() }
             )
         }
 
-        // 6. Checkout: Final dynamic summary
+        // 6. Checkout
         composable(route = "checkout") {
             CheckoutScreen(
                 viewModel = viewModel,
                 onOrderPlaced = {
-                    viewModel.clearCart() // Wipe cart in DB
-                    navController.navigate("success") // Navigate to Success Screen
+                    navController.navigate("success")
                 },
                 onBack = { navController.popBackStack() },
                 onEditAddress = { navController.navigate("address") }
             )
         }
 
-        // 7. Account Screen: Displays captured user data
-        composable(route = "account") {
+        // 7. Account Screen
+        composable("account") {
             AccountScreen(
                 viewModel = viewModel,
                 onLogout = {
-                    viewModel.logout() // Clears ViewModel state
+                    viewModel.logout()
                     navController.navigate("login") {
                         popUpTo("home") { inclusive = true }
+                    }
+                },
+                onBack = { navController.popBackStack() },
+                // FIXED: Added missing parameters required by your AccountScreen.kt
+                onNavigateHome = {
+                    navController.navigate("home") {
+                        popUpTo("home") { saveState = true }
+                        launchSingleTop = true
+                    }
+                },
+                onNavigateCart = {
+                    navController.navigate("cart") {
+                        launchSingleTop = true
                     }
                 }
             )
         }
 
-        // 8. Order Success Screen: Final confirmation
+        // 8. Order Success Screen
         composable(route = "success") {
             OrderSuccessScreen(
+                viewModel = viewModel, // Pass the viewModel here
                 onContinueShopping = {
                     navController.navigate("home") {
                         popUpTo("home") { inclusive = true }
