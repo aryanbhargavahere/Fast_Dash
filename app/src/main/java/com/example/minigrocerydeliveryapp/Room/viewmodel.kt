@@ -21,13 +21,10 @@ class GroceryViewModel(private val dao: CartDao, context: Context) : ViewModel()
     var userPhone by mutableStateOf(prefs.getString("user_phone", "") ?: "")
     var isLoggedIn by mutableStateOf(prefs.getBoolean("is_logged_in", false))
     var isDarkMode by mutableStateOf(prefs.getBoolean("dark_mode", false))
-
-    // --- NEW: Dynamic Address State (Non-Hardcoded) ---
     var userAddress by mutableStateOf("Add Your Address")
     private val _savedAddresses = MutableStateFlow<List<String>>(emptyList())
     val savedAddresses = _savedAddresses.asStateFlow()
 
-    // --- NEW: Order History State ---
     private val _orderHistory = MutableStateFlow<List<Order>>(emptyList())
     val orderHistory = _orderHistory.asStateFlow()
 
@@ -51,7 +48,6 @@ class GroceryViewModel(private val dao: CartDao, context: Context) : ViewModel()
     val totalAmount = cartItems.map { items -> items.sumOf { it.price * it.quantity } }
         .stateIn(viewModelScope, SharingStarted.Lazily, 0.0)
 
-    // --- NEW: Address Logic ---
     fun addAddress(newAddress: String) {
         if (newAddress.isNotBlank()) {
             _savedAddresses.value = _savedAddresses.value + newAddress
@@ -63,7 +59,6 @@ class GroceryViewModel(private val dao: CartDao, context: Context) : ViewModel()
         userAddress = address
     }
 
-    // --- NEW/UPDATED: Place Order with History Recording ---
     fun placeOrder(amount: Double, orderId: String) {
         viewModelScope.launch {
             if (cartItems.value.isNotEmpty()) {
@@ -73,7 +68,6 @@ class GroceryViewModel(private val dao: CartDao, context: Context) : ViewModel()
                     amount = amount,
                     status = "Delivered"
                 )
-                // Update history state
                 _orderHistory.value = listOf(newOrder) + _orderHistory.value
                 activeOrdersCount += 1
                 clearCart()

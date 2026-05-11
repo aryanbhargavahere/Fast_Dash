@@ -27,8 +27,6 @@ fun CheckoutScreen(
     val cartItems by viewModel.cartItems.collectAsState()
     val itemTotal by viewModel.totalAmount.collectAsState()
     val isDark = viewModel.isDarkMode
-
-    // Selection state for payment
     var selectedPaymentMethod by remember { mutableStateOf("COD") }
 
     val handlingFee = 15.0
@@ -54,7 +52,6 @@ fun CheckoutScreen(
             Surface(color = surfaceColor, shadowElevation = 8.dp) {
                 Button(
                     onClick = {
-                        // FIXED: Generate unique Order ID and pass grandTotal
                         val uniqueOrderId = "GOC-${System.currentTimeMillis().toString().takeLast(5)}"
                         viewModel.placeOrder(amount = grandTotal, orderId = uniqueOrderId)
                         onOrderPlaced()
@@ -81,7 +78,6 @@ fun CheckoutScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // --- DELIVERY ADDRESS SECTION ---
             CheckoutSectionCard(title = "Delivery Address", isDark = isDark) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(Icons.Default.LocationOn, null, tint = Color(0xFF006D3B), modifier = Modifier.size(20.dp))
@@ -97,11 +93,8 @@ fun CheckoutScreen(
                     }
                 }
             }
-
-            // --- PAYMENT METHOD SECTION ---
             CheckoutSectionCard(title = "Payment Method", isDark = isDark) {
                 Column {
-                    // Cash on Delivery Option
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
@@ -117,8 +110,6 @@ fun CheckoutScreen(
                         Icon(Icons.Default.Payments, null, tint = Color.Gray, modifier = Modifier.padding(horizontal = 8.dp))
                         Text("Cash on Delivery", color = textColor)
                     }
-
-                    // Online Payment Option
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
@@ -136,8 +127,6 @@ fun CheckoutScreen(
                     }
                 }
             }
-
-            // --- ORDER SUMMARY SECTION ---
             CheckoutSectionCard(title = "Order Summary", isDark = isDark) {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     cartItems.forEach { item ->

@@ -52,7 +52,7 @@ fun OrdersScreen(viewModel: GroceryViewModel, onBack: () -> Unit) {
 }
 
 @Composable
-fun OrderCard(order: Order, isDark: Boolean) { // Changed .Orders to .Order
+fun OrderCard(order: Order, isDark: Boolean) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
@@ -75,8 +75,6 @@ fun OrderCard(order: Order, isDark: Boolean) { // Changed .Orders to .Order
             Column(Modifier.weight(1f)) {
                 Text(text = "Order #${order.id}", fontWeight = FontWeight.Bold, fontSize = 16.sp)
                 Text(order.date, color = Color.Gray, fontSize = 12.sp)
-                // Note: Ensure your Order data class has 'status'.
-                // If you get an error here, check if it's called 'status' in ViewModel
                 Text(order.status, color = Color(0xFF006D3B), fontWeight = FontWeight.Bold, fontSize = 12.sp)
             }
             Text(

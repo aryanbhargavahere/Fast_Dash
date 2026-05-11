@@ -121,7 +121,6 @@ fun LoginScreen(
                     }
                 } else {
                     if (otpValue == "1234") {
-                        // Pass current values back to navigation
                         onLoginSuccess(viewModel.userName, viewModel.userPhone)
                     }
                 }

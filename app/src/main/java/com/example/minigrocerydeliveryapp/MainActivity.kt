@@ -19,21 +19,16 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // 1. Initialize Room Database
         val db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java, "grocery-db"
         ).fallbackToDestructiveMigration().build()
 
         val dao = db.cartDao()
-
-        // 2. Initialize ViewModel and pass applicationContext for SharedPreferences
         val viewModel = GroceryViewModel(dao, applicationContext)
 
         setContent {
             val isDark = viewModel.isDarkMode
-
-            // 3. Define the dynamic color scheme for Dark/Light mode
             val colorScheme = if (isDark) {
                 darkColorScheme(
                     primary = Color(0xFF006D3B),
@@ -57,8 +52,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    // 4. Logic to persist login:
-                    // If viewModel.isLoggedIn is true, start at "home", else start at "login"
                     val startDest = if (viewModel.isLoggedIn) "home" else "login"
 
                     AppNavigation(

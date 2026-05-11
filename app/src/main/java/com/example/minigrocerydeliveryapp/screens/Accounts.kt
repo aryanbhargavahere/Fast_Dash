@@ -57,7 +57,6 @@ fun AccountScreen(
                 .padding(16.dp)
                 .verticalScroll(rememberScrollState())
         ) {
-            // --- USER HEADER ---
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Box(
                     modifier = Modifier
@@ -80,8 +79,6 @@ fun AccountScreen(
             }
 
             Spacer(Modifier.height(24.dp))
-
-            // --- NEW: ORDER SUMMARY BOXES ---
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
@@ -105,8 +102,6 @@ fun AccountScreen(
             }
 
             Spacer(Modifier.height(32.dp))
-
-            // --- ACCOUNT OPTIONS ---
             AccountOptionItem(Icons.Default.ShoppingBag, "Order History", "View previous orders", isDark, onOrdersClick)
             AccountOptionItem(Icons.Default.LocationOn, "Saved Addresses", viewModel.userAddress, isDark, onSavedAddressesClick)
 

@@ -28,7 +28,6 @@ fun OrderSuccessScreen(
 ) {
     val isDark = viewModel.isDarkMode
 
-    // Generate unique random Order ID and Estimate
     val orderId = remember { "GOC-${Random.nextInt(10000, 99999)}" }
     val estimate = remember { "${Random.nextInt(20, 35)}-${Random.nextInt(40, 55)} mins" }
 
@@ -50,7 +49,6 @@ fun OrderSuccessScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            // Success Icon with dynamic green contrast
             Box(
                 modifier = Modifier
                     .size(100.dp)
@@ -86,8 +84,6 @@ fun OrderSuccessScreen(
             )
 
             Spacer(modifier = Modifier.height(32.dp))
-
-            // --- Order Info Card ---
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(16.dp),
@@ -96,7 +92,6 @@ fun OrderSuccessScreen(
                 border = if (isDark) BorderStroke(1.dp, Color.DarkGray) else null
             ) {
                 Column(modifier = Modifier.padding(20.dp)) {
-                    // Order ID Row
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
@@ -106,8 +101,6 @@ fun OrderSuccessScreen(
                     }
 
                     HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = dividerColor)
-
-                    // Estimated Time Row
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -133,8 +126,6 @@ fun OrderSuccessScreen(
             }
 
             Spacer(modifier = Modifier.height(48.dp))
-
-            // Continue Shopping Button
             Button(
                 onClick = onContinueShopping,
                 modifier = Modifier

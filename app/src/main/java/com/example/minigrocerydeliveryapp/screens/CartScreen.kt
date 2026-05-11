@@ -119,7 +119,7 @@ fun CartItemRow(item: CartItem, isDarkMode: Boolean, onIncrease: () -> Unit, onD
 fun BillSummaryCard(itemTotal: Double, isDarkMode: Boolean) {
     val cardColor = if (isDarkMode) Color(0xFF2C2C2C) else Color.White
     val textColor = if (isDarkMode) Color.White else Color.Black
-    val handlingFee = 15.0 // Updated fee in Rupees
+    val handlingFee = 15.0
     val grandTotal = itemTotal + handlingFee
 
     Card(

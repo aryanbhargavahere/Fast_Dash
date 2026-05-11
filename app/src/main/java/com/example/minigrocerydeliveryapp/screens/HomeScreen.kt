@@ -36,7 +36,6 @@ fun HomeScreen(
     val cartItems by viewModel.cartItems.collectAsState()
     val isDark = viewModel.isDarkMode
 
-    // Dynamic Colors based on Dark Mode
     val bgColor = if (isDark) Color(0xFF121212) else Color(0xFFF8F9FA)
     val surfaceColor = if (isDark) Color(0xFF1E1E1E) else Color.White
     val textColor = if (isDark) Color.White else Color.Black
@@ -85,7 +84,7 @@ fun HomeScreen(
                 onAccountClick = onAccountClick
             )
         },
-        containerColor = bgColor // Root background color
+        containerColor = bgColor
     ) { padding ->
         LazyColumn(
             modifier = Modifier
@@ -100,7 +99,7 @@ fun HomeScreen(
                 )
             }
 
-            item { PromoBanner() } // Banners usually stay colorful
+            item { PromoBanner() }
 
             item { CategoryRow(isDark = isDark, onSeeAllClick = onSeeAllCategories) }
 

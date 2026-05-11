@@ -65,7 +65,7 @@ fun CategoriesScreen(onBack: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             items(categories) { category ->
-                CategoryCard(category) // Reusing the CategoryCard from previous step
+                CategoryCard(category)
             }
         }
     }
@@ -77,11 +77,11 @@ fun CategoryCard(category: CategoryItem, modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .padding(8.dp)
-            .clickable { /* Handle category selection logic here */ }
+            .clickable {}
     ) {
         Surface(
             modifier = Modifier
-                .aspectRatio(1f) // Ensures the card stays a perfect square
+                .aspectRatio(1f)
                 .fillMaxWidth(),
             shape = RoundedCornerShape(16.dp),
             border = BorderStroke(1.dp, Color(0xFFEEEEEE)),
