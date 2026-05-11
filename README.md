@@ -102,6 +102,7 @@ com.example.minigrocerydeliveryapp
     Minimum SDK: 24+ (Android 7.0+)
 
     Gradle: Version 8.0+
+    
 ▶️ Steps to Run
 
     1. Clone the repository: git clone [https://github.com/yourusername/Fast_Dash.git](https://github.com/yourusername/Fast-Dash.git)
@@ -120,7 +121,7 @@ com.example.minigrocerydeliveryapp
 
 ##📲 Screenshots
 
-<img width="745" height="1600" alt="image" src="https://github.com/user-attachments/assets/90e90960-8472-4ed9-a6c7-54b6314573e6" />
+<img width="797" height="1600" alt="image" src="https://github.com/user-attachments/assets/47d5993f-4932-459b-a659-5417709511c1" />
 <img width="1080" height="2139" alt="image" src="https://github.com/user-attachments/assets/bd78a77a-861b-47a6-b12a-73127c6bd01d" />
 <img width="1080" height="2141" alt="image" src="https://github.com/user-attachments/assets/fbd16bb5-5328-4b3e-b14a-3835dbad3ba9" />
 
