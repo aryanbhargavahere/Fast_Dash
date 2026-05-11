@@ -69,7 +69,6 @@ Privacy is a core pillar of the Fast Dash experience:
 com.example.minigrocerydeliveryapp
 ├── Accounts                # User Account & Preference Management
 │   ├── Orders.kt           # Order history and tracking logic
-│   ├── PaymentMethods.kt   # Payment gateway integrations
 │   └── Saved Adress.kt     # User location management
 ├── datamodel               # Core Data Entities
 │   ├── CategoryItem.kt     # Grocery category data class
