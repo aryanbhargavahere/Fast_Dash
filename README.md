@@ -18,11 +18,9 @@
 6. [🚀 Getting Started](#-getting-started)
     - [📋 Prerequisites](#-prerequisites)
     - [▶️ Steps to Run](#-steps-to-run)
-7. [💳 Payment & Checkout](#-payment--checkout)
-8. [🌙 Dark Mode Support](#-dark-mode-support)
-9. [🧠 How the App Works](#-how-the-app-works)
-10. [📲 Screenshots](#-screenshots)
-11. [👤 Author](#-author)
+7. [🧠 How the App Works](#-how-the-app-works)
+8. [📲 Screenshots](#-screenshots)
+9. [👤 Author](#-author)
 
 ---
 
@@ -106,9 +104,9 @@ com.example.minigrocerydeliveryapp
     Gradle: Version 8.0+
 ▶️ Steps to Run
 
-    1. **Clone the repository**: git clone [https://github.com/yourusername/Fast_Dash.git](https://github.com/yourusername/Fast-Dash.git)
-    2. **Open in Android Studio**: Wait for the Gradle sync to finish.
-    3. **Run**: Click the Run button to install on an emulator or physical device.
+    1. Clone the repository: git clone [https://github.com/yourusername/Fast_Dash.git](https://github.com/yourusername/Fast-Dash.git)
+    2. Open in Android Studio: Wait for the Gradle sync to finish.
+    3. Run: Click the Run button to install on an emulator or physical device.
 ---
 
 ##🧠 How the App Works
@@ -118,6 +116,14 @@ com.example.minigrocerydeliveryapp
     Persistence: Cart items are stored in a local SQLite database via Room. This ensures your shopping progress is saved even if the device restarts.
 
     Bill Summary: The app calculates a subtotal and adds a fixed handling fee (₹15) to generate the final Grand Total.
+---
+
+##📲 Screenshots
+
+<img width="745" height="1600" alt="image" src="https://github.com/user-attachments/assets/90e90960-8472-4ed9-a6c7-54b6314573e6" />
+<img width="1080" height="2139" alt="image" src="https://github.com/user-attachments/assets/bd78a77a-861b-47a6-b12a-73127c6bd01d" />
+<img width="1080" height="2141" alt="image" src="https://github.com/user-attachments/assets/fbd16bb5-5328-4b3e-b14a-3835dbad3ba9" />
+
 ---
 
 ##👤 Author
