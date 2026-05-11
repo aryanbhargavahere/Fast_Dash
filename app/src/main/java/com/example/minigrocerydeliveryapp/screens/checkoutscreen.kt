@@ -54,7 +54,9 @@ fun CheckoutScreen(
             Surface(color = surfaceColor, shadowElevation = 8.dp) {
                 Button(
                     onClick = {
-                        viewModel.placeOrder()
+                        // FIXED: Generate unique Order ID and pass grandTotal
+                        val uniqueOrderId = "GOC-${System.currentTimeMillis().toString().takeLast(5)}"
+                        viewModel.placeOrder(amount = grandTotal, orderId = uniqueOrderId)
                         onOrderPlaced()
                     },
                     modifier = Modifier
