@@ -28,12 +28,12 @@
 
 - **🏠 Dynamic Home Screen**: Seamlessly browse categories and trending products with a fluid interface.
 - **🌓 Adaptive Dark Mode**: Full app-wide Dark Mode support that toggles instantly via user settings.
-- **Localized Pricing**: All transactions and bill summaries are calculated in Indian Rupees (₹).
+- **Localized Pricing**: All transactions and bill summaries.
 - **🛒 Smart Cart**: Persistent cart management powered by RoomDB—items stay in your cart even if the app closes.
 - **💳 Multi-Payment Support**: Choose between "Cash on Delivery" or "Pay Online" (UPI/Card).
-- **✅ Order Confirmation**: Unique Order ID generation with randomized delivery time estimates (25–45 mins).
+- **✅ Order Confirmation**: Unique Order ID generation with randomized delivery time estimates.
 - **📊 Activity Dashboard**: View active and delivered order counts directly on the profile screen.
-- **📍 Dynamic Address Management**: Users can now add, save, and switch between multiple delivery locations (no longer hardcoded).
+- **📍 Dynamic Address Management**: Users can now add, save, and switch between multiple delivery locations.
 - **📜 Order History**: A dedicated history tab to track previous transactions with unique Order IDs and timestamps.
 ---
 
@@ -113,7 +113,7 @@ com.example.minigrocerydeliveryapp
 
     Persistence: Cart items are stored in a local SQLite database via Room. This ensures your shopping progress is saved even if the device restarts.
 
-    Bill Summary: The app calculates a subtotal and adds a fixed handling fee (₹15) to generate the final Grand Total.
+    Bill Summary: The app calculates a subtotal and adds a fixed handling fee to generate the final Grand Total.
 ---
 
 ##📲 Screenshots
