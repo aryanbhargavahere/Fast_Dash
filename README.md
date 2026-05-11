@@ -28,11 +28,13 @@
 
 - **🏠 Dynamic Home Screen**: Seamlessly browse categories and trending products with a fluid interface.
 - **🌓 Adaptive Dark Mode**: Full app-wide Dark Mode support that toggles instantly via user settings.
-- **🇮🇳 Localized Pricing**: All transactions and bill summaries are calculated in Indian Rupees (₹).
+- **Localized Pricing**: All transactions and bill summaries are calculated in Indian Rupees (₹).
 - **🛒 Smart Cart**: Persistent cart management powered by RoomDB—items stay in your cart even if the app closes.
 - **💳 Multi-Payment Support**: Choose between "Cash on Delivery" or "Pay Online" (UPI/Card).
 - **✅ Order Confirmation**: Unique Order ID generation with randomized delivery time estimates (25–45 mins).
-
+- **📊 Activity Dashboard**: View active and delivered order counts directly on the profile screen.
+- **📍 Dynamic Address Management**: Users can now add, save, and switch between multiple delivery locations (no longer hardcoded).
+- **📜 Order History**: A dedicated history tab to track previous transactions with unique Order IDs and timestamps.
 ---
 
 ## 🛠️ Tech Stack
@@ -94,19 +96,15 @@ com.example.minigrocerydeliveryapp
 ---
 
 ##🚀 Getting Started
-📋 Prerequisites
-
-    Android Studio (Koala or newer)
-
-    Minimum SDK: 24+ (Android 7.0+)
-
-    Gradle: Version 8.0+
+### 📋 Prerequisites
+1. Android Studio (Koala or newer)
+2. Minimum SDK: 24+ (Android 7.0+)
+3. Gradle: Version 8.0+
     
-▶️ Steps to Run
-
-    1. Clone the repository: git clone [https://github.com/yourusername/Fast_Dash.git](https://github.com/yourusername/Fast-Dash.git)
-    2. Open in Android Studio: Wait for the Gradle sync to finish.
-    3. Run: Click the Run button to install on an emulator or physical device.
+### ▶️ Steps to Run
+1. **Clone the repository:** `git clone https://github.com/yourusername/Fast-Dash.git`
+2. **Open in Android Studio:** Wait for the Gradle sync to finish and indexes to build.
+3. **Run:** Click the **Run** button to install on an emulator or physical device.
 ---
 
 ##🧠 How the App Works
